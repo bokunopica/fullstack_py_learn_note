@@ -225,7 +225,7 @@ $("div").on("click mouseover",function{
 })
 // 给不同时间添加不同的函数
 $("div").on({
-    "click":function(){
+    "click":function(){ 
         alert("hello");
     },
     "mouseover":function(){
@@ -596,4 +596,50 @@ $.get("url",{
 },function(data,statusText,xhr){
     alert(data);
 })
+
+// put请求
+$.ajax({
+   url: 'script.php',
+   type: 'PUT',
+   success: function( response ) {
+   }
+});
+
+//图片上传
+$("input").change(function () {
+    /*
+    input改变上传文件事件:change
+    */
+    var file = $("img").get(0).files[0];//获得图片
+    var reader = new FileReader();
+    reader.readAsDataURL(file);//file内容转换
+    reader.onloadend = function () {
+        $("img").attr("src", reader.result);//图片src属性修改为(类型;编码类型,字符串)
+    }
+});
+
+$("#register2").click(function () {
+    var IMG_BASE = $("#Image1").attr("src"); //要上传的图片的base64编码
+    var IMG_ROUTE = $(".imgfile").val();//获取上传图片路径，为获取图片类型使用
+    var IMG_ENDFOUR = IMG_ROUTE.substr(IMG_ROUTE.length - 4, 4);//截取路径后四位，判断图片类型
+    var IMG_FOMATE = "jpeg"; //图片类型***
+    if (IMG_ENDFOUR.trim() == ".jpg")
+        IMG_FOMATE = "jpg";
+    else if (IMG_ENDFOUR.trim() == ".png")
+        IMG_FOMATE = "png";
+    else if (IMG_ENDFOUR.trim() == ".bmp")
+        IMG_FOMATE = "bmp";
+    //图片正式开始上传
+    $.ajax({
+        type: "post",
+        url: "/api/xxx/",
+        data: JSON.stringfy{'imgBase': IMG_BASE, 'imgFormat': IMG_FOMATE},
+        dataType: "json",
+        success: function (data) {
+            //data为返回的图片路径
+        }
+    });
+});
+	//flask处理ajax
+	receive = request.get_data()//receive是bytes,内容是ajax发送的json字符串
 ```
