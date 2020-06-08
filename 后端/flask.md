@@ -640,3 +640,80 @@ parser.add_argument("name",type=str,help="xxxx")
 - 交给Handler处理者进行处理
   - 处理者可以对输出样式进行格式化
   - 也可以对数据进行过滤
+
+### 部署日志组件
+
+```python
+handler = logging.FileHandler(log_dir, encoding='UTF-8')# 日志存储地址log_dir
+handler.setLevel(logging.WARNING)# 日志等级
+logging_format = logging.Formatter(
+'%(asctime)s - %(levelname)s - %(filename)s - %(funcName)s - %(lineno)s - %(message)s')# 日志记录形式
+handler.setFormatter(logging_format)
+app.logger.addHandler(handler)
+```
+
+## 九.部署
+
+### g-unicorn
+
+```shell
+pip install gunicorn
+# 启动
+gunicorn -w 4 -b 127.0.0.1:8888 manage:app
+# 关闭
+pstree -ap|grep gunicorn
+kill -9 1234
+# 重启
+kill -HUP 1234
+```
+
+```python
+# config.py
+# config.py
+import os
+import gevent.monkey
+gevent.monkey.patch_all()
+
+import multiprocessing
+
+# debug = True
+loglevel = 'debug'
+bind = "0.0.0.0:8888"
+pidfile = "log/gunicorn.pid"
+accesslog = "log/access.log"
+errorlog = "log/debug.log"
+daemon = True
+
+# 启动的进程数
+workers = multiprocessing.cpu_count()
+worker_class = 'gevent'
+x_forwarded_for_header = 'X-FORWARDED-FOR'
+
+# log
+accesslog = "log/access.log"
+errorlog = "log/debug.log"
+loglevel = "debug"
+```
+
+
+
+### nginx
+
+```nginx
+server {
+    
+    server_name  0.0.0.0; # 主机的域名，或者ip地址
+    location / {
+        proxy_pass http://127.0.0.1:8888; # 这里是指向 gunicorn host 的服务地址
+        proxy_set_header Host $host;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
+  }
+```
+
+nginx创建用户
+
+```
+useradd -s /sbin/nologin -M nginx
+```
+
