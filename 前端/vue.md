@@ -6,9 +6,11 @@
 
 2.本地下载
 
-## 1.模板语法
+## 基础
 
-### (1)插值
+### 1.模板语法
+
+#### (1)插值
 
 - a.文本{{}}
 - b纯HTML
@@ -22,7 +24,7 @@
   - 计算
     - {{ 10+20 }}
 
-### (2)指令:带有v-前缀的特殊属性
+#### (2)指令:带有v-前缀的特殊属性
 
 - v-if
   - 布尔值
@@ -37,12 +39,12 @@
 - v-on:click
 - v-for
 
-### (3)缩写
+#### (3)缩写
 
 - v-bind:src => :src
 - v-on:click =>@click
 
-## 2.动态绑定class/style
+### 2.动态绑定class/style
 
 (1)绑定class/style
 
@@ -87,14 +89,14 @@
 </body>
 ```
 
-## 3.条件渲染
+### 3.条件渲染
 
 - v-if
 - v-else v-else-if
 - template v-if,包装元素template不会被创建
 - v-show
 
-## 4.列表渲染
+### 4.列表渲染
 
 - v-for (特殊 v-for="n in 10")
   - in
@@ -125,7 +127,7 @@
       - splice(start_index,end_index,changeInfo)
 - 应用:显示过滤结果
 
-## 5.事件处理
+### 5.事件处理
 
 (1) 监听事件-直接触发代码
 
@@ -150,8 +152,134 @@
   - @keyup.enter
   - @keyup.13
 
-## 6.表单控件绑定/双向数据绑定
+### 6.表单控件绑定/双向数据绑定
 
 v-model
 
 (1)基本用法
+
+```html
+<div id="box">
+    <input type="text" v-model="demo1">
+</div>	
+<script>
+    var vm = new Vue({
+        el:"#box",
+        data:{
+            demo1: "",
+        }
+    })
+</script>
+```
+
+(2)修饰符
+
+- lazy
+  - 懒加载
+- num
+  - 数字
+- trim
+  - 去首尾空格
+
+## 组件
+
+### 1.axios与fetch实现数据请求
+
+(1)fetch
+
+```javascript
+fetch("/json/demo.json")
+.then(res=>{return res.json()})
+.then(res=>{console.log(res.data);})
+```
+
+(2)axios
+
+- github地址
+
+```
+https://github.com/axios/axios
+```
+
+- cdn引入
+
+```html
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+```
+
+- 实际操作
+  - 返回的数据会被包在一个键值对中的data中
+
+```javascript
+axios.get("")
+axios.post("")
+axios.put("")
+axios.delete("")
+
+axios({
+    url:"/gateway?type=2&k=3553574",
+    headers:{
+        'X-Client-Info': '{"a":3000,"ch":"1002"}',
+        'X-Host': 'mall.cfg.common-banner'
+}})
+.then(res=>{console.log(res.data);})
+```
+
+### 2.计算属性
+
+```html
+<div id="box">
+    <p>直接写：{{myname.substring(0,1).toUpperCase() + myname.substring(1)}}</p>
+
+    <p>计算属性：{{getMyName}}</p>
+
+    <p>方法：{{getMyNameFunc()}}</p>
+
+</div>
+<script>
+    var vm = new Vue({
+        el:"#box",
+        data:{
+            myname: "demo",
+        },
+        computed:{
+            getMyName(){
+                return this.myname.substring(0,1).toUpperCase() + this.myname.substring(1)
+            }
+        },
+        methods:{
+            getMyNameFunc(){
+                return this.myname.substring(0,1).toUpperCase() + this.myname.substring(1);
+            }
+        }
+    })
+</script>
+```
+
+### 5.组件化开发基础
+
+扩展HTML元素，封装可重用的代码
+
+### 6.组件注册方式
+
+a.全局组件
+
+Vue.component
+
+b.局部组件
+
+### 7.组件编写方式与Vue实例的区别
+
+- 自定义组件需要有一个root element
+- 父子组件的data是无法共享的
+- 组件可以有data,methods,computed....,但是data必须是一个函数
+
+### 8.组件通信
+
+1. 父子组件传值(props down,events up)
+2. 属性验证
+   - props:{name:Number}
+   - Number,String,Boolean,Array,Object,Function,null(不限制类型)
+3. 事件机制
+   - a.使用$on(eventName)监听事件
+   - b.使用$emit(eventName)触发事件

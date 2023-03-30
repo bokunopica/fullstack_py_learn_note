@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+		<script type="text/javascript" src="js/jquery.js"></script>
+		<script type="text/javascript" src="js/bootstrap.js"></script>
+		<link rel="stylesheet" href="css/bootstrap.css" />
+		<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.css" />
+
+		<link rel="stylesheet" type="text/css" href="css/swiper.css" />
+		<script type="text/javascript" src="js/swiper.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/reset.css" />
+		<style type="text/css">
+			.form-info {
+				border: 1px solid orange;
+				margin: 100px auto;
+				width: 30%;
+				padding: 50px;
+			}
+			
+			.form-info h2 {
+				font-size: 2rem;
+				margin-bottom: 20px;
+			}
+			
+			.form-info .submit {
+				text-align: center;
+			}
+			
+			.form-info img{
+				width: 40px;
+				height: 40px;
+				float: left;
+			}
+			input[type=file]{
+				float: left;
+				height: 40px;
+				line-height: 40px;
+				padding-left: 20px;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<div class="container-fluid">
+			<div class="form-info">
+
+				<h2>信息修改</h2>
+
+				<form>
+					<div class="form-group">
+						<label for="exampleInputEmail1">用户名</label>
+						<input type="text" class="form-control" id="exampleInputEmail1" placeholder="请输入用户名" value="Rock" disabled="disabled">
+					</div>
+					<div class="form-group">
+						<label for="exampleInputPassword1">邮箱</label>
+						<input type="email" class="form-control" placeholder="请输入新的邮箱" value="旧邮箱">
+					</div>
+					<div class="form-group clearfix">
+						<label for="exampleInputFile">头像</label><br />
+						<img class="img-circle" src="https://cs.vmovier.com/Uploads/Banner/2017/12/23/5a3d52d82724d.png" alt="" /> 
+						<input type="file" id="exampleInputFile">
+					</div>
+					<div class="submit"><button type="submit" class="btn btn-primary">提交</button></div>
+
+				</form>
+			</div>
+		</div>
+
+	</body>
+
+</html>

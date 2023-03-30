@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+		<script type="text/javascript" src="js/jquery.js"></script>
+		<script type="text/javascript" src="js/bootstrap.js"></script>
+		<link rel="stylesheet" href="css/bootstrap.css" />
+		<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.css" />
+
+		<link rel="stylesheet" type="text/css" href="css/swiper.css" />
+		<script type="text/javascript" src="js/swiper.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/reset.css" />
+		<style type="text/css">
+			.form-info {
+				border: 1px solid orange;
+				margin: 100px auto;
+				width: 30%;
+				padding: 50px;
+			}
+			
+			.form-info h2{
+				font-size: 2rem;
+				margin-bottom: 20px;
+			}
+			.form-info .submit{
+				text-align: center;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<div class="container-fluid">
+			<div class="form-info">
+				
+				<h2>用户注册</h2>
+				
+				<form>
+					<div class="form-group">
+						<label for="exampleInputEmail1">用户名</label>
+						<input type="text" class="form-control" id="exampleInputEmail1" placeholder="请输入用户名">
+						<p class="help-block">请输入6-16位用户名</p>
+					</div>
+					<div class="form-group">
+						<label for="exampleInputPassword1">密码</label>
+						<input type="password" class="form-control" placeholder="请输入密码">
+						<p class="help-block">请输入6位以上拼音字母组合密码</p>
+					</div>
+					<div class="form-group">
+						<label for="exampleInputPassword1">确认密码</label>
+						<input type="password" class="form-control" placeholder="请再次输入密码">
+						<p class="help-block">请再次输入6位以上拼音字母组合密码</p>
+					</div>
+					<div class="form-group">
+						<label for="exampleInputPassword1">邮箱</label>
+						<input type="password" class="form-control" placeholder="请再次输入密码">
+						<p class="help-block">请输入邮箱</p>
+					</div>
+					<div class="form-group">
+						<label for="exampleInputFile">头像</label>
+						<input type="file" id="exampleInputFile">
+						
+					</div>
+					<div class="submit"><button type="submit" class="btn btn-primary">注册</button></div>
+					
+				</form>
+			</div>
+		</div>
+
+	</body>
+
+</html>

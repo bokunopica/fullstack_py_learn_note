@@ -1,0 +1,32 @@
+﻿/* 去掉标签默认的内边距和外边距 */
+body,p,h1,h2,h3,h4,h5,h6,ul,dl,dd,input,select{margin:0;padding:0}
+
+/* 去掉列表的项目符号 */
+ul{list-style:none;}
+
+em{font-style:normal;}
+
+/* 去掉默认的下划线 */
+a{text-decoration:none;}
+
+/* 去掉图片在加链接时的边框 */
+img{border:0;}
+
+/* 让h标签继承body设置的文字大小 */
+h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal;}
+
+/* 清除浮动 */
+.clearfix:after{
+	content:'';
+	display:block;
+	clear:both;
+	height:0
+}
+
+
+
+
+
+
+
+

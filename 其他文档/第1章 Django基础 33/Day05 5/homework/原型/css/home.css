@@ -1,0 +1,75 @@
+	.swiper-container {
+		width: 80%;
+		height: 500px;
+	}
+	
+	.swiper-slide img {
+		width: 100%;
+		height: 100%;
+	}
+	
+	.child-nav {
+		margin-top: 20px !important;
+		width: 60%;
+		margin: 0px auto;
+	}
+	
+	.navbar {
+		margin-bottom: 0px;
+		background: rgba(0, 0, 0, 0.9);
+	}
+	
+	.navbar-right li .icon {
+		padding: 5px 10px;
+	}
+	
+	.movie_list {
+		width: 56%;
+		margin: 0px auto;
+	}
+	
+	.movie_list li {
+		margin-top: 10px;
+		height: 200px;
+	}
+	
+	.movie_list li .movie_list_left {
+		height: 100%;
+		position: relative;
+		width: 25%;
+		float: left;
+	}
+	
+	.movie_list li .movie_list_right {
+		height: 100%;
+		position: relative;
+		width: 75%;
+		float: left;
+		padding-left: 40px;
+	}
+	
+	.movie_list img {
+		height: 100%;
+		width: 100%;
+	}
+	
+	.bottom-cover {
+		position: absolute;
+		bottom: 2px;
+		right: 10px;
+		color: white;
+	}
+	
+	.movie_list_right h2 span {
+		font-size: 2rem;
+	}
+	
+	.movie_list_right .movie-intro {
+		margin-top: 50px;
+	}
+	
+	.movie_list_right .movie-like {
+		position: absolute;
+		bottom: 0px;
+		right: 200px;
+	}
