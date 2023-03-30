@@ -1175,7 +1175,7 @@ class ClassIterator(object):
     
     def __next__(self):
         if self.current_num < len(self.obj.names):
-            ret = self.obj[self.current_num]
+            ret = self.obj.names[self.current_num]
             self.current_num += 1
             return ret
         else:
